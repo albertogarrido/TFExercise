@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/activity_margin"
+    android:orientation="vertical"
     tools:context="net.albertogarrido.tfexercise.ui.DirectionsActivity">
 
-    <LinearLayout
-        android:id="@+id/search_layout"
+    <net.albertogarrido.tfexercise.ui.custom.SearchDistanceView
+        android:id="@+id/search_distance_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/activity_margin"
-        android:orientation="vertical">
-        <net.albertogarrido.tfexercise.ui.custom.InputSuggestionsView
-            android:id="@+id/isv_from"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"/>
 
-        <net.albertogarrido.tfexercise.ui.custom.InputSuggestionsView
-            android:id="@+id/isv_to"
+    <TextView
+        android:id="@+id/error_msg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/error_route_not_found"
+        android:textColor="@color/colorAccent"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/layout_results"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/tv_results"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
+
     </LinearLayout>
 
-
-</RelativeLayout>
+</LinearLayout>

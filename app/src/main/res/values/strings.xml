@@ -3,4 +3,5 @@
     <string name="action_search">Search</string>
     <string name="hint_et_from">From (address or coordinates)</string>
     <string name="hint_et_to">To (address or coordinates)</string>
+    <string name="error_route_not_found">Error, route not found</string>
 </resources>

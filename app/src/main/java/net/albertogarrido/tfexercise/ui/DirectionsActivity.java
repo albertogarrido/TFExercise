@@ -6,10 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 
 import net.albertogarrido.tfexercise.R;
-import net.albertogarrido.tfexercise.ui.custom.InputSuggestionsView;
+import net.albertogarrido.tfexercise.ui.custom.SearchDistanceView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,12 +18,8 @@ import static net.albertogarrido.tfexercise.ui.utils.AnimationUtils.expandDown;
 
 public class DirectionsActivity extends AppCompatActivity {
 
-    @BindView(R.id.search_layout)
-    LinearLayout searchLayout;
-    @BindView(R.id.isv_from)
-    InputSuggestionsView inputSuggestionsViewFrom;
-    @BindView(R.id.isv_to)
-    InputSuggestionsView inputSuggestionsViewTo;
+    @BindView(R.id.search_distance_view)
+    SearchDistanceView searchDistanceView;
 
     private boolean isSearchExpanded = true;
 
@@ -33,9 +28,6 @@ public class DirectionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_directions);
         ButterKnife.bind(this);
-        Resources res = getResources();
-        inputSuggestionsViewFrom.setHint(res.getString(R.string.hint_et_from));
-        inputSuggestionsViewTo.setHint(res.getString(R.string.hint_et_to));
     }
 
     @Override
@@ -46,7 +38,6 @@ public class DirectionsActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-
         if (item.getItemId() == R.id.menu_item_search) {
             toggleSearchLayout();
         }
@@ -55,9 +46,9 @@ public class DirectionsActivity extends AppCompatActivity {
 
     private void toggleSearchLayout() {
         if (isSearchExpanded) {
-            collapseUp(searchLayout);
+            collapseUp(searchDistanceView);
         } else {
-            expandDown(searchLayout);
+            expandDown(searchDistanceView);
         }
         isSearchExpanded = !isSearchExpanded;
     }
