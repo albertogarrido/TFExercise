@@ -1,13 +1,17 @@
 package net.albertogarrido.tfexercise.ui.custom;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import net.albertogarrido.tfexercise.R;
+import net.albertogarrido.tfexercise.ui.viewmodel.SearchViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,6 +22,8 @@ public class SearchDistanceView extends LinearLayout {
     InputSuggestionsView inputSuggestionsViewFrom;
     @BindView(R.id.isv_to)
     InputSuggestionsView inputSuggestionsViewTo;
+    @BindView(R.id.btn_perform_search)
+    Button btnPerformSearch;
 
     public SearchDistanceView(Context context) {
         super(context);
@@ -34,16 +40,35 @@ public class SearchDistanceView extends LinearLayout {
         init(context);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public SearchDistanceView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
 
     private void init(Context context) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.cv_search_distance, this, true);
-        ButterKnife.bind(view);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.cv_search_distance, this, true);
+        setOrientation(VERTICAL);
+        ButterKnife.bind(this, view);
+
         inputSuggestionsViewFrom.setHint(context.getResources().getString(R.string.hint_et_from));
         inputSuggestionsViewTo.setHint(context.getResources().getString(R.string.hint_et_to));
     }
+
+    public void addOnSearchButtonListener(OnClickListener listener) {
+        btnPerformSearch.setOnClickListener(listener);
+    }
+
+    public SearchViewModel getSearchTerms() {
+
+        if(inputSuggestionsViewFrom.validate() & inputSuggestionsViewTo.validate()) {
+            return SearchViewModel.create(
+                    inputSuggestionsViewFrom.getSearchTerm(),
+                    inputSuggestionsViewTo.getSearchTerm()
+            );
+        } else {
+            return SearchViewModel.createEmpty();
+        }
+    }
+
 }

@@ -1,6 +1,8 @@
 package net.albertogarrido.tfexercise.ui.custom;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.RecyclerView;
@@ -36,18 +38,35 @@ public class InputSuggestionsView extends LinearLayout {
         init(context);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public InputSuggestionsView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
 
     private void init(Context context) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.cv_input_suggestions, this, true);
-        ButterKnife.bind(view);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.cv_input_suggestions, this, true);
+        setOrientation(VERTICAL);
+        ButterKnife.bind(this, view);
     }
 
     public void setHint(String hint) {
         inputLayout.setHint(hint);
+    }
+
+    public boolean validate() {
+        if(input.getText() != null && !"".equals(input.getText().toString())){
+            inputLayout.setErrorEnabled(false);
+            inputLayout.setError(null);
+            return true;
+        } else {
+            inputLayout.setErrorEnabled(true);
+            inputLayout.setError("Cannot be empty");
+            return false;
+        }
+    }
+
+    public String getSearchTerm() {
+        return input.getText().toString();
     }
 }
