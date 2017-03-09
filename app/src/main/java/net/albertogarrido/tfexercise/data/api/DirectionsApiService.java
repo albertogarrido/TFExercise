@@ -1,8 +1,8 @@
-package net.albertogarrido.tfexercise.data;
+package net.albertogarrido.tfexercise.data.api;
 
 import com.google.gson.GsonBuilder;
 
-import net.albertogarrido.tfexercise.data.responsemodels.DirectionsResponse;
+import net.albertogarrido.tfexercise.data.api.responsemodels.DirectionsResponse;
 
 import java.io.IOException;
 

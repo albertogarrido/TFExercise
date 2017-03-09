@@ -3,4 +3,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="activity_margin">16dp</dimen>
+    <dimen name="item_separation">8dp</dimen>
 </resources>

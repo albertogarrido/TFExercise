@@ -4,4 +4,7 @@
     <string name="hint_et_from">From (address or coordinates)</string>
     <string name="hint_et_to">To (address or coordinates)</string>
     <string name="error_route_not_found">Error, route not found</string>
+    <string name="loading_indicator">Loading Results</string>
+    <string name="prompt_distance">Distance\n %s</string>
+    <string name="prompt_duration">Duration\n %s</string>
 </resources>

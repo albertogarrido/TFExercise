@@ -9,9 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import net.albertogarrido.tfexercise.R;
 import net.albertogarrido.tfexercise.ui.viewmodel.SearchViewModel;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +27,8 @@ public class SearchDistanceView extends LinearLayout {
     InputSuggestionsView inputSuggestionsViewTo;
     @BindView(R.id.btn_perform_search)
     Button btnPerformSearch;
+    @BindView(R.id.tv_loading_indicator)
+    TextView loadingIndicator;
 
     public SearchDistanceView(Context context) {
         super(context);
@@ -61,7 +66,7 @@ public class SearchDistanceView extends LinearLayout {
 
     public SearchViewModel getSearchTerms() {
 
-        if(inputSuggestionsViewFrom.validate() & inputSuggestionsViewTo.validate()) {
+        if (inputSuggestionsViewFrom.validate() & inputSuggestionsViewTo.validate()) {
             return SearchViewModel.create(
                     inputSuggestionsViewFrom.getSearchTerm(),
                     inputSuggestionsViewTo.getSearchTerm()
@@ -71,4 +76,25 @@ public class SearchDistanceView extends LinearLayout {
         }
     }
 
+    public void showHideLoadingIndicator(boolean shouldShow) {
+        if (shouldShow) {
+            loadingIndicator.setVisibility(VISIBLE);
+        } else {
+            loadingIndicator.setVisibility(GONE);
+        }
+    }
+
+    public void addOnSearchInputTextChangedListener(SearchInputTextChangedListener searchInputTextChangedListener) {
+        inputSuggestionsViewFrom.addOnSearchInputTextChangedListener(searchInputTextChangedListener);
+        inputSuggestionsViewTo.addOnSearchInputTextChangedListener(searchInputTextChangedListener);
+    }
+
+    public void showSuggestions(int viewId, List<String> suggestions) {
+        if (viewId == inputSuggestionsViewFrom.getId()) {
+            inputSuggestionsViewFrom.populateSuggestions(suggestions);
+        } else if (viewId == inputSuggestionsViewTo.getId()) {
+            inputSuggestionsViewTo.populateSuggestions(suggestions);
+
+        }
+    }
 }

@@ -6,6 +6,11 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 public class AnimationUtils {
+
+    private AnimationUtils() {
+        throw new AssertionError("No instances allowed for " + AnimationUtils.class.getSimpleName());
+    }
+
     public static void expandDown(final View v) {
         v.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         final int targetHeight = v.getMeasuredHeight();

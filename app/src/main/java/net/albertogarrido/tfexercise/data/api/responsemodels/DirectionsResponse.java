@@ -1,4 +1,4 @@
-package net.albertogarrido.tfexercise.data.responsemodels;
+package net.albertogarrido.tfexercise.data.api.responsemodels;
 
 import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
@@ -12,10 +12,10 @@ public abstract class DirectionsResponse {
     public static DirectionsResponse create(String status, List<Route> routes) {
         return new AutoValue_DirectionsResponse(status, routes);
     }
-    
+
     public static TypeAdapter<DirectionsResponse> typeAdapter(Gson gson) {
         return new AutoValue_DirectionsResponse.GsonTypeAdapter(gson);
-    }    
+    }
 
     public abstract String status();
 
