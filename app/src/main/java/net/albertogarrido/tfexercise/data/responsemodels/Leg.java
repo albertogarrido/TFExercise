@@ -1,4 +1,4 @@
-package net.albertogarrido.tfexercise.data.valueclasses;
+package net.albertogarrido.tfexercise.data.responsemodels;
 
 import com.google.auto.value.AutoValue;
 import com.google.gson.Gson;
