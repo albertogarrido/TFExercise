@@ -1,6 +1,6 @@
 package net.albertogarrido.tfexercise.data;
 
-import net.albertogarrido.tfexercise.data.valueclasses.DirectionsResponse;
+import net.albertogarrido.tfexercise.data.responsemodels.DirectionsResponse;
 
 import java.io.IOException;
 
@@ -33,6 +33,7 @@ public interface DirectionsService {
                     // interceptor to log queries
                     .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
                     // interceptor to avoid passing the API_KEY in every query
+                    // also it adds the path segment for json response
                     .addInterceptor(new Interceptor() {
                         @Override
                         public Response intercept(Chain chain) throws IOException {
@@ -40,6 +41,7 @@ public interface DirectionsService {
                             HttpUrl originalHttpUrl = original.url();
 
                             HttpUrl url = originalHttpUrl.newBuilder()
+                                    .addPathSegment("json")
                                     .addQueryParameter("key", API_KEY)
                                     .build();
 
