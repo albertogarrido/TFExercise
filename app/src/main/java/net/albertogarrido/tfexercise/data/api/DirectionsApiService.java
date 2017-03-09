@@ -1,5 +1,7 @@
 package net.albertogarrido.tfexercise.data;
 
+import com.google.gson.GsonBuilder;
+
 import net.albertogarrido.tfexercise.data.responsemodels.DirectionsResponse;
 
 import java.io.IOException;
@@ -16,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface DirectionsService {
+public interface DirectionsApiService {
 
     String API_KEY = "AIzaSyBG9sdPACNw2svFE7QqIApXVxDU3hFNV_E";
     String DIRECTIONS_URL = "https://maps.googleapis.com/maps/api/";
@@ -52,10 +54,15 @@ public interface DirectionsService {
                         }
                     });
 
+    GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create(
+            new GsonBuilder().registerTypeAdapterFactory(AutoValueGsonFactory.create()
+            ).create());
+
+
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(DIRECTIONS_URL)
             .client(httpClient.build())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(gsonConverterFactory)
             .build();
 
 

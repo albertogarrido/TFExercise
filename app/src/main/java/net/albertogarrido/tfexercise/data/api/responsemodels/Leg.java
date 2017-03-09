@@ -9,7 +9,7 @@ import java.util.List;
 @AutoValue
 public abstract class Leg {
 
-    public static Leg create(Distance distance, Duration duration, List<RouteStep> steps) {
+    public static Leg create(Distance distance, Duration duration, List<Step> steps) {
         return new AutoValue_Leg(distance, duration, steps);
     }
 
@@ -21,5 +21,5 @@ public abstract class Leg {
 
     public abstract Duration duration();
 
-    public abstract List<RouteStep> steps();
+    public abstract List<Step> steps();
 }

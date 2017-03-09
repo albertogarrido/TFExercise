@@ -6,14 +6,14 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
 
 @AutoValue
-public abstract class RouteStep {
+public abstract class Step {
 
-    public static RouteStep create(Distance distance, Duration duration, String instruction) {
-        return new AutoValue_RouteStep(distance, duration, instruction);
+    public static Step create(Distance distance, Duration duration, String instruction) {
+        return new AutoValue_Step(distance, duration, instruction);
     }
 
-    public static TypeAdapter<RouteStep> typeAdapter(Gson gson) {
-        return new AutoValue_RouteStep.GsonTypeAdapter(gson);
+    public static TypeAdapter<Step> typeAdapter(Gson gson) {
+        return new AutoValue_Step.GsonTypeAdapter(gson);
     }
 
     public abstract Distance distance();
