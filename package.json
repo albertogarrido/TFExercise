@@ -1,0 +1,24 @@
+{
+  "name": "tfexercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertogarrido/TFExercise.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertogarrido/TFExercise/issues"
+  },
+  "homepage": "https://github.com/albertogarrido/TFExercise#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-native": "^0.42.0"
+  }
+}

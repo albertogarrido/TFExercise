@@ -18,6 +18,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.0'
+        resolutionStrategy.force 'com.squareup.okhttp3:okhttp:3.4.1'
+        resolutionStrategy.force 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'
+        resolutionStrategy.force 'com.squareup.okhttp3:okhttp-ws:3.4.1'
+    }
+    packagingOptions {
+        exclude '/lib/mips64/**'
+        exclude '/lib/arm64-v8a/**'
+        // exclude '/lib/x86_64/**'
+    }
 }
 
 dependencies {
@@ -28,7 +39,10 @@ dependencies {
 
     compile 'com.github.satyan:sugar:1.5'
 
-    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'
+    compile 'com.squareup.okhttp3:okhttp-ws:3.4.1'
+
     compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
@@ -40,6 +54,8 @@ dependencies {
     provided 'com.google.auto.value:auto-value:1.2'
     apt 'com.ryanharter.auto.value:auto-value-gson:0.4.6'
     provided 'com.ryanharter.auto.value:auto-value-gson:0.4.6'
+
+    compile "com.facebook.react:react-native:0.42.0"
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

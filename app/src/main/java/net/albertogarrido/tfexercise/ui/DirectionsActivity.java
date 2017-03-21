@@ -1,5 +1,6 @@
 package net.albertogarrido.tfexercise.ui;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -131,6 +132,9 @@ public class DirectionsActivity extends AppCompatActivity implements DirectionsP
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_item_search) {
             toggleSearchLayout();
+        }
+        if(item.getItemId() == R.id.menu_react) {
+            startActivity(new Intent(this, MyReactActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

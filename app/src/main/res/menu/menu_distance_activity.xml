@@ -8,4 +8,11 @@
         android:icon="@drawable/ic_search_white_24dp"
         android:title="@string/action_search"
         app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_react"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_directions_black_18dp"
+        android:title="@string/action_search"
+        app:showAsAction="ifRoom"/>
 </menu>
